@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 messageDiv.textContent = payload.message;
                 messageDiv.className = 'success';
                 messageDiv.classList.remove('hidden');
-                // refresh list
-                fetchActivities();
+                // refresh list and wait for it to finish
+                await fetchActivities();
               } else {
                 messageDiv.textContent = payload.detail || 'Failed to remove participant';
                 messageDiv.className = 'error';
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         messageDiv.className = "success";
         signupForm.reset();
         // refresh activities so new participant shows up immediately
-        fetchActivities();
+        await fetchActivities();
       } else {
         messageDiv.textContent = result.detail || "An error occurred";
         messageDiv.className = "error";
